@@ -118,7 +118,80 @@ function verificarSePedidoCompleto() {
         } */
 }
 
+function buscarInformacoesPedido() {
+    const pratosSelecionados = document.querySelectorAll(".selecionado");
+    pratosSelecionados.forEach(prato => {
+        const nome = prato.querySelector('[data-identifier="food-title"]');
+        const nomePrato = nome.innerText
+        console.log(nomePrato)
+
+        const preco = prato.querySelector('[data-identifier="food-price"]');
+        const precoPrato = preco.innerText
+        console.log(precoPrato)
+
+        criarTelaFinalizacaoPedido(nomePrato, precoPrato)
+    }
+    )
+}
+
+
+
+function abrirTelaFinalizacaoPedido() {
+    const telaConfirmacao = document.querySelector(".tela-confirmacao")
+    const telaPrincipal = document.querySelector("#tela-principal")
+    telaConfirmacao.classList.remove("escondido")
+    telaPrincipal.classList.add("esmaecido")
+    
+    buscarInformacoesPedido()
+}
+
+function fecharTelaFinalizacaoPedido() {
+    const telaConfirmacao = document.querySelector(".tela-confirmacao")
+    const telaPrincipal = document.querySelector("#tela-principal")
+    telaConfirmacao.classList.add("escondido")
+    telaPrincipal.classList.remove("esmaecido")
+
+    desfazerTelaFinalizacaoPedido()
+}
+
+function criarTelaFinalizacaoPedido(nomePrato, precoPrato) {
+    const telaConfirmacao = document.querySelector(".tela-confirmacao__pedidos");
+    
+    const pratoConteudo = `
+        <div class="tela-confirmacao__prato">
+        <p class="tela-confirmacao__prato-nome">
+        ${nomePrato}
+            </p>
+            <p class="tela-confirmacao__prato-preco">
+                ${precoPrato}
+                </p>
+                </div>`;
+
+    telaConfirmacao.innerHTML += pratoConteudo;
+            
+}
+
+function desfazerTelaFinalizacaoPedido() {
+    const telaConfirmacao = document.querySelector(".tela-confirmacao__pedidos");
+
+    telaConfirmacao.innerHTML = "";
+}
 
 clicarPrato();
 clicarBebida();
 clicarSobremesa();
+
+/*
+
+    `<div class="tela-confirmacao__prato">
+        <p class="tela-confirmacao__prato-nome">
+            ${nomePrato}
+        </p>
+        <p class="tela-confirmacao__prato-preco">
+            ${precoPrato}
+        </p>
+    "</div>
+        `
+
+
+*/

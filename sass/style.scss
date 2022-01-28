@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Righteous&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
-
 $fonte-titulo: "Righteous", cursive;
 $fonte-corpo: "Roboto", sans-serif;
 
@@ -68,7 +67,6 @@ $cor-barra-inferior: #cbcbcb;
     // Scrollbar
     &::-webkit-scrollbar {
         // display: none;
-        
     }
     // -ms-overflow-style: none; /* IE and Edge */
     // scrollbar-width: none; /* Firefox */
@@ -129,8 +127,85 @@ $cor-barra-inferior: #cbcbcb;
     }
 }
 
+// Tela de confirmação
+
+.tela-confirmacao {
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    width: 90%;
+
+    display: flex;
+    flex-direction: column;
+
+    font-family: $fonte-corpo;
+    font-size: 20px;
+    color: white;
+
+    background: #50d074;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+
+    padding: 20px;
+
+    &__titulo {
+        text-align: center;
+        padding-bottom: 25px;
+    }
+
+    &__prato {
+        display: flex;
+        justify-content: space-between;
+        padding: 7px 0;
+
+        font-weight: 400;
+    }
+
+    &__total {
+        display: flex;
+        justify-content: space-between;
+        padding: 7px 0;
+        margin-bottom: 15px;
+    }
+
+    &__botao-pedir {
+        display: block;
+        text-align: center;
+        width: 100%;
+        margin: 0 auto;
+        padding: 10px;
+
+        font-family: $fonte-corpo;
+        font-size: 20px;
+        font-weight: 700;
+        color: #50D074;
+
+        background: #ffffff;
+
+        border: none;
+        border-radius: 100px;
+    }
+
+    &__botao-cancelar {
+        display: block;
+        margin: 0 auto;
+        padding-top: 10px;
+
+        font-family: $fonte-corpo;
+        font-size: 18px;
+        font-weight: 700;
+        color: white;
+
+        background: none;
+        border: none;
+    }
+}
+
 // Barra inferior
 .barra-inferior {
+
     height: 92px;
     position: fixed;
     bottom: 0;
@@ -155,7 +230,7 @@ $cor-barra-inferior: #cbcbcb;
         border-radius: 50px;
 
         &--pedido-completo {
-            background: #32B72F;
+            background: #32b72f;
         }
     }
 
@@ -167,18 +242,16 @@ $cor-barra-inferior: #cbcbcb;
 
         color: white;
     }
-    
 }
-
 
 // Estados
 
 .selecionado {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 0px 0px 5px #32B72F;
-    
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 0px 0px 5px #32b72f;
+
     &::before {
-        content: url('../icones/checkmark-circle.svg');
-        
+        content: url("../icones/checkmark-circle.svg");
+
         position: absolute;
         bottom: 10px;
         right: 15px;
@@ -187,4 +260,8 @@ $cor-barra-inferior: #cbcbcb;
 
 .escondido {
     display: none;
+}
+
+.esmaecido {
+    opacity: 10%;
 }
