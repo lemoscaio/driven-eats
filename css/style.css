@@ -108,9 +108,18 @@
 }
 .tela-confirmacao__prato {
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  flex-wrap: nowrap;
   padding: 7px 0;
   font-weight: 400;
+}
+.tela-confirmacao__prato-nome {
+  flex-grow: 0;
+}
+.tela-confirmacao__prato-preco {
+  display: flex;
+  flex-wrap: nowrap;
 }
 .tela-confirmacao__total {
   display: flex;
@@ -168,6 +177,7 @@
   background: #32b72f;
 }
 .barra-inferior__texto {
+  width: 50%;
   font-family: "Roboto", sans-serif;
   text-align: center;
   padding: 8px;

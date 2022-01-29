@@ -1,96 +1,13 @@
-function clicarPrato() {
-    const prato1 = document.querySelector(".prato1");
-    const prato2 = document.querySelector(".prato2");
-    const prato3 = document.querySelector(".prato3");
-    prato1.addEventListener("click", () => {
-        if (prato2.classList.contains("selecionado") || prato3.classList.contains("selecionado")) {
-            prato1.classList.add("selecionado");
-            prato2.classList.remove("selecionado");
-            prato3.classList.remove("selecionado");
-        } else { prato1.classList.add("selecionado"); }
-        verificarSePedidoCompleto();
-    })
-    prato2.addEventListener("click", () => {
-        if (prato1.classList.contains("selecionado") || prato3.classList.contains("selecionado")) {
-            prato2.classList.add("selecionado");
-            prato1.classList.remove("selecionado");
-            prato3.classList.remove("selecionado");
-        } else { prato2.classList.add("selecionado"); }
-        verificarSePedidoCompleto();
-    })
-    prato3.addEventListener("click", () => {
-        if (prato1.classList.contains("selecionado") || prato2.classList.contains("selecionado")) {
-            prato3.classList.add("selecionado");
-            prato1.classList.remove("selecionado");
-            prato2.classList.remove("selecionado");
-        } else { prato3.classList.add("selecionado"); }
-        verificarSePedidoCompleto();
-    })
+function clicarOpcao(divPai, opcao) {
+    const selecionado = document.querySelector("." + divPai + " .selecionado");
+    if (selecionado !== null) {
+        selecionado.classList.remove("selecionado")
+    }
+    const prato = document.querySelector("." + opcao);
+    prato.classList.add("selecionado")
 
-
+    verificarSePedidoCompleto();
 }
-
-function clicarBebida() {
-    const bebida1 = document.querySelector(".bebida1");
-    const bebida2 = document.querySelector(".bebida2");
-    const bebida3 = document.querySelector(".bebida3");
-    bebida1.addEventListener("click", () => {
-        if (bebida2.classList.contains("selecionado") || bebida3.classList.contains("selecionado")) {
-            bebida1.classList.add("selecionado");
-            bebida2.classList.remove("selecionado");
-            bebida3.classList.remove("selecionado");
-        } else { bebida1.classList.add("selecionado"); }
-        verificarSePedidoCompleto();
-    })
-    bebida2.addEventListener("click", () => {
-        if (bebida1.classList.contains("selecionado") || bebida3.classList.contains("selecionado")) {
-            bebida2.classList.add("selecionado");
-            bebida1.classList.remove("selecionado");
-            bebida3.classList.remove("selecionado");
-        } else { bebida2.classList.add("selecionado"); }
-        verificarSePedidoCompleto();
-    })
-    bebida3.addEventListener("click", () => {
-        if (bebida1.classList.contains("selecionado") || bebida2.classList.contains("selecionado")) {
-            bebida3.classList.add("selecionado");
-            bebida1.classList.remove("selecionado");
-            bebida2.classList.remove("selecionado");
-        } else { bebida3.classList.add("selecionado"); }
-        verificarSePedidoCompleto();
-    })
-
-}
-
-function clicarSobremesa() {
-    const sobremesa1 = document.querySelector(".sobremesa1");
-    const sobremesa2 = document.querySelector(".sobremesa2");
-    const sobremesa3 = document.querySelector(".sobremesa3");
-    sobremesa1.addEventListener("click", () => {
-        if (sobremesa2.classList.contains("selecionado") || sobremesa3.classList.contains("selecionado")) {
-            sobremesa1.classList.add("selecionado");
-            sobremesa2.classList.remove("selecionado");
-            sobremesa3.classList.remove("selecionado");
-        } else { sobremesa1.classList.add("selecionado"); }
-        verificarSePedidoCompleto();
-    })
-    sobremesa2.addEventListener("click", () => {
-        if (sobremesa1.classList.contains("selecionado") || sobremesa3.classList.contains("selecionado")) {
-            sobremesa2.classList.add("selecionado");
-            sobremesa1.classList.remove("selecionado");
-            sobremesa3.classList.remove("selecionado");
-        } else { sobremesa2.classList.add("selecionado"); }
-        verificarSePedidoCompleto();
-    })
-    sobremesa3.addEventListener("click", () => {
-        if (sobremesa1.classList.contains("selecionado") || sobremesa2.classList.contains("selecionado")) {
-            sobremesa3.classList.add("selecionado");
-            sobremesa1.classList.remove("selecionado");
-            sobremesa2.classList.remove("selecionado");
-        } else { sobremesa3.classList.add("selecionado"); }
-        verificarSePedidoCompleto();
-    })
-}
-
 
 function verificarSePedidoCompleto() {
     let contador = 0;
@@ -119,30 +36,88 @@ function verificarSePedidoCompleto() {
 }
 
 function buscarInformacoesPedido() {
+    let total = 0;
+    let totalExibicao = ""
+    let resumoPratos = [];
+    let totalFormatado = ""
     const pratosSelecionados = document.querySelectorAll(".selecionado");
+
     pratosSelecionados.forEach(prato => {
-        const nome = prato.querySelector('[data-identifier="food-title"]');
-        const nomePrato = nome.innerText
+
+        const elementoNomePrato = prato.querySelector('[data-identifier="food-title"]');
+        const nomePrato = elementoNomePrato.innerText
         console.log(nomePrato)
 
-        const preco = prato.querySelector('[data-identifier="food-price"]');
-        const precoPrato = preco.innerText
-        console.log(precoPrato)
+        let elementoPreco = prato.querySelector('[data-identifier="food-price"]');
+        let precoPrato = elementoPreco.innerText;
 
-        criarTelaFinalizacaoPedido(nomePrato, precoPrato)
-    }
-    )
+        const precoExibicao = precoPrato.replace("R$ ", "")
+
+        precoPrato = precoExibicao.replace(",", ".");
+
+        precoPrato = parseFloat(precoPrato);
+
+        total += precoPrato;
+
+        totalFormatado = total.toFixed(2)
+        
+        totalExibicao = totalFormatado.toString()
+
+        totalExibicao = totalExibicao.replace(".", ",");
+
+        resumoPratos.push(nomePrato);
+
+        criarTelaFinalizacaoPedido(nomePrato, precoExibicao);
+    })
+
+    criarTotalTelaFinalizacaoPedido(totalExibicao);
+
+
+    return resumo = [resumoPratos, totalFormatado];
+
 }
-
-
 
 function abrirTelaFinalizacaoPedido() {
     const telaConfirmacao = document.querySelector(".tela-confirmacao")
     const telaPrincipal = document.querySelector("#tela-principal")
     telaConfirmacao.classList.remove("escondido")
     telaPrincipal.classList.add("esmaecido")
-    
+
     buscarInformacoesPedido()
+}
+
+function criarTelaFinalizacaoPedido(nomePrato, precoPrato) {
+    const telaConfirmacao = document.querySelector(".tela-confirmacao__pedidos");
+    const pratoConteudo =
+        `<div class="tela-confirmacao__prato">
+            <p class="tela-confirmacao__prato-nome">
+                ${nomePrato}
+            </p>
+            <p class="tela-confirmacao__prato-preco">
+                ${precoPrato}
+            </p>
+        </div>`;
+
+    telaConfirmacao.innerHTML += pratoConteudo;
+
+
+}
+
+function criarTotalTelaFinalizacaoPedido(totalExibicao) {
+    const telaConfirmacao = document.querySelector(".tela-confirmacao__pedidos");
+    
+    const totalConteudo =
+        `<div class="tela-confirmacao__total">
+            <p class="tela-confirmacao__total-nome">
+                TOTAL
+            </p>
+            <p class="tela-confirmacao__total-preco">
+            R$ ${totalExibicao}
+            </p>
+        </div>`;
+
+    telaConfirmacao.innerHTML += totalConteudo;
+
 }
 
 function fecharTelaFinalizacaoPedido() {
@@ -154,44 +129,43 @@ function fecharTelaFinalizacaoPedido() {
     desfazerTelaFinalizacaoPedido()
 }
 
-function criarTelaFinalizacaoPedido(nomePrato, precoPrato) {
-    const telaConfirmacao = document.querySelector(".tela-confirmacao__pedidos");
-    
-    const pratoConteudo = `
-        <div class="tela-confirmacao__prato">
-        <p class="tela-confirmacao__prato-nome">
-        ${nomePrato}
-            </p>
-            <p class="tela-confirmacao__prato-preco">
-                ${precoPrato}
-                </p>
-                </div>`;
-
-    telaConfirmacao.innerHTML += pratoConteudo;
-            
-}
-
 function desfazerTelaFinalizacaoPedido() {
     const telaConfirmacao = document.querySelector(".tela-confirmacao__pedidos");
 
     telaConfirmacao.innerHTML = "";
 }
 
-clicarPrato();
-clicarBebida();
-clicarSobremesa();
+function criarMensagemWhatsapp() {
 
-/*
+    let nomeUsuario = prompt("Qual o seu nome?")
+    let enderecoUsuario = prompt("Qual o seu endereço? Exemplo: Rua Dias da Cruz, 01 - Méier")
 
-    `<div class="tela-confirmacao__prato">
-        <p class="tela-confirmacao__prato-nome">
-            ${nomePrato}
-        </p>
-        <p class="tela-confirmacao__prato-preco">
-            ${precoPrato}
-        </p>
-    "</div>
-        `
+    let prato1 = (resumo[0][0]);
+    let prato2 = (resumo[0][1]);
+    let prato3 = (resumo[0][2]);
 
+    let total = (resumo[1])
 
-*/
+    let numeroCelular = 552120420558;
+    let mensagem =
+        `Olá, gostaria de fazer o pedido:
+- Prato: ${prato1}
+- Bebida: ${prato2}
+- Sobremesa: ${prato3}
+Total: R$ ${total}
+                
+Nome: ${nomeUsuario}
+Endereço: ${enderecoUsuario}`
+
+    let mensagemTransformada = encodeURIComponent(mensagem)
+
+    let mensagemWhatsapp = `https://wa.me/${numeroCelular}?text=${mensagemTransformada}`;
+
+    return mensagemWhatsapp
+}
+
+function mandarMensagemParaWhatsapp() {
+    let linkWhatsapp = criarMensagemWhatsapp()
+
+    window.open(linkWhatsapp);
+}

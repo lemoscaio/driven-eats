@@ -157,10 +157,21 @@ $cor-barra-inferior: #cbcbcb;
 
     &__prato {
         display: flex;
+        align-items: center;
         justify-content: space-between;
+        flex-wrap: nowrap;
         padding: 7px 0;
 
         font-weight: 400;
+    }
+
+    &__prato-nome {
+        flex-grow: 0;
+    }
+
+    &__prato-preco {
+        display: flex;
+        flex-wrap: nowrap;
     }
 
     &__total {
@@ -235,6 +246,8 @@ $cor-barra-inferior: #cbcbcb;
     }
 
     &__texto {
+        width: 50%;
+
         font-family: $fonte-corpo;
         text-align: center;
 
