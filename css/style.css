@@ -67,6 +67,7 @@
   height: 87px;
   object-fit: cover;
   border-radius: 4px;
+  margin: 3px 0;
 }
 .pratos .prato__nome {
   font-size: 16px;
@@ -84,6 +85,10 @@
   bottom: 5px;
   font-size: 16px;
   padding: 10px 0;
+}
+
+.bebidas .prato__imagem {
+  object-fit: contain;
 }
 
 .tela-confirmacao {

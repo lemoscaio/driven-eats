@@ -146,7 +146,7 @@ function criarMensagemWhatsapp() {
 
     let total = (resumo[1])
 
-    let numeroCelular = 552120420558;
+    let numeroCelular = 5521999547964;
     let mensagem =
         `Olá, gostaria de fazer o pedido:
 - Prato: ${prato1}

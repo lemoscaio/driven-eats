@@ -94,6 +94,7 @@ $cor-barra-inferior: #cbcbcb;
 
         border-radius: 9px;
         box-shadow: 0px 0px 10px -4px rgba(0, 0, 0, 0.25);
+
     }
     .prato {
         &__imagem {
@@ -101,7 +102,7 @@ $cor-barra-inferior: #cbcbcb;
             height: 87px;
             object-fit: cover;
             border-radius: 4px;
-            // margin: 3px 0;
+            margin: 3px 0;
         }
 
         &__nome {
@@ -122,11 +123,17 @@ $cor-barra-inferior: #cbcbcb;
             bottom: 5px;
             font-size: 16px;
             padding: 10px 0;
-            // align-self: flex-end;
+            
         }
     }
 }
 
+.bebidas {
+
+    .prato__imagem {
+        object-fit: contain;
+}
+}
 // Tela de confirmação
 
 .tela-confirmacao {
