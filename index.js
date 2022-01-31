@@ -11,10 +11,10 @@ function clicarOpcao(divPai, opcao) {
 
 function verificarSePedidoCompleto() {
     let contador = 0;
+    categorias = document.querySelectorAll(".pratos")
     const pratos = document.querySelectorAll(".prato");
-    pratos.forEach((prato) => {
 
-        // console.log(prato);
+    pratos.forEach((prato) => {
         if (prato.classList.contains("selecionado")) {
             contador += 1;
         }
@@ -24,7 +24,7 @@ function verificarSePedidoCompleto() {
 
     const botaoPedidoCompleto = document.querySelector(".barra-inferior--pedido-completo");
 
-    if (contador === 3) {
+    if (contador === categorias.length) {
         botaoPedidoCompleto.classList.remove("escondido")
     }
 
