@@ -1,25 +1,27 @@
 <div align="center"><img style = "width:100%;"src="https://i.imgur.com/f10I3pz.png"></img></div>
 <hr>
-<h2 align=center>Instagram Mock Website</h2>
+<h2 align=center>Driven Eats - Food Delivery Web-App</h2>
 <h3 align=center>Web development Project</h3>
 <hr>
 <div align=center>
-<h4>A food delivery web-app made with HTML, SASS and Vanilla JavaScript.</h4>
+<h4>A mock food delivery web-app made with HTML, SASS and Vanilla JavaScript. This is a POC, not a real and finished web-app.</h4>
 <h4>This was the third project of the Driven full stack web development bootcamp and the first to use JavaScript.</h4>
 </div>
 <br>
-<div align=center style="display:flex; justify-content: center; gap:5%">
-    <img style = "height:200px;"src="https://i.imgur.com/RGUKmDS.png">
-    <img style = "height:200px;"src="https://i.imgur.com/qGm4Xb1.png">
+<div align=center style="display:flex; justify-content: center;">
+    <img style = "height:300px;" src="https://i.imgur.com/PVQuNW7.png">
+    <img style = "height:300px;" src="https://i.imgur.com/TfJHmDq.png">
+    <img style = "height:300px;" src="https://i.imgur.com/gqofXHP.png">
+    <img style = "height:300px;" src="https://i.imgur.com/8pkdNea.png">
 </div>
 <br><hr>
 
 ## Features
 
-- Responsive layout
-- Fixed header
-- Sticky sidebar
-- Video with autoplay as in the original (muted)
+- Choose 1 item of each category for making the order
+- After choosing the items for all the categories, the user can finish the order
+- Order summary for user confirmation
+- CSS classes dinamically inserted via JS to give a visual feedback to the user
 
 ## Requirements
 
