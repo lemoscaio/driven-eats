@@ -9,10 +9,10 @@
 </div>
 <br>
 <div align=center style="display:flex; justify-content: center;">
-    <img style = "height:300px;" src="https://i.imgur.com/PVQuNW7.png">
-    <img style = "height:300px;" src="https://i.imgur.com/TfJHmDq.png">
-    <img style = "height:300px;" src="https://i.imgur.com/gqofXHP.png">
-    <img style = "height:300px;" src="https://i.imgur.com/8pkdNea.png">
+    <img style = "height:350px;" src="https://i.imgur.com/PVQuNW7.png">
+    <img style = "height:350px;" src="https://i.imgur.com/TfJHmDq.png">
+    <img style = "height:350px;" src="https://i.imgur.com/gqofXHP.png">
+    <img style = "height:350px;" src="https://i.imgur.com/8pkdNea.png">
 </div>
 <br><hr>
 
